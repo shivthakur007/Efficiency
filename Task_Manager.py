@@ -2,11 +2,9 @@ import streamlit as st
 import os
 import hashlib
 
+st.title("🔐 Personal Task Manager")
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
-
-# ---------- LOGIN ----------
-st.title("🔐 Personal Task Manager")
 
 USERS_FILE = "users.txt"
 
