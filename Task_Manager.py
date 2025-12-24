@@ -1,38 +1,4 @@
-import streamlit as st
-import os
-import hashlib
-
-st.title("🔐 Personal Task Manager")
-def hash_password(password):
-    return hashlib.sha256(password.encode()).hexdigest()
-
-USERS_FILE = "users.txt"
-
-def load_users():
-    if not os.path.exists(USERS_FILE):
-        return {}
-    users = {}
-    with open(USERS_FILE, "r") as f:
-        for line in f:
-            user, pwd = line.strip().split(",")
-            users[user] = pwd
-    return users
-
-def save_user(username, password):
-    with open(USERS_FILE, "a") as f:
-        f.write(f"{username},{hash_password(password)}\n")
-
-users = load_users()
-
-if "user" not in st.session_state:
-    st.session_state.user = None
-
-if st.session_state.user is None:
-    st.subheader("Login / Register")
-
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-
+import 
     col1, col2 = st.columns(2)
 
     with col1:
