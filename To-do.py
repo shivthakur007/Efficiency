@@ -3,8 +3,7 @@ import os
 import hashlib
 import pickle
 from datetime import datetime
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+
 
 # ------------------ CONFIG ------------------
 st.set_page_config(page_title="Personal Task Manager", page_icon="📅")
