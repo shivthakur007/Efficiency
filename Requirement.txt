@@ -1,0 +1,8 @@
+streamlit
+yfinance
+matplotlib
+pandas
+plotly
+numpy-financial
+openpyxl
+google-api-python-client
