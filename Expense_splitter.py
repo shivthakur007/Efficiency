@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title="Trip Expense Splitter", layout="centered")
+st.set_page_config(page_title="Trip Expense Splitter", layout="Right")
 
 st.title("💸 Trip Expense Splitter")
 
