@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-rom io import BytesIO
+from io import BytesIO
 
 st.set_page_config(page_title="Trip Expense Splitter", layout="centered")
 
