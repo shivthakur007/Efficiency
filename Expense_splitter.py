@@ -106,27 +106,28 @@ if st.button("Calculate Split"):
         st.session_state.history.append({
             "People": ", ".join(people),
             "Total Expense": total_expense,
-            "Each Share": share
+            "Each Share": round(share, 2)
         })
 
         # ----------------------------
-# Export to Excel (FIXED)
-# ----------------------------
-if not df.empty:
-    st.divider()
-    st.subheader("📥 Download Settlement")
+        # Export to Excel
+        # ----------------------------
+        df = pd.DataFrame(settlements)
 
-    buffer = BytesIO()
-    df.to_excel(buffer, index=False, engine="openpyxl")
-    buffer.seek(0)
+        if not df.empty:
+            st.divider()
+            st.subheader("📥 Download Settlement")
 
-    st.download_button(
-        label="Download Excel File",
-        data=buffer,
-        file_name="trip_settlement.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
+            buffer = BytesIO()
+            df.to_excel(buffer, index=False, engine="openpyxl")
+            buffer.seek(0)
 
+            st.download_button(
+                label="Download Excel File",
+                data=buffer,
+                file_name="trip_settlement.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
 
 # ----------------------------
 # Trip History
