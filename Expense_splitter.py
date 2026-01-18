@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+rom io import BytesIO
 
 st.set_page_config(page_title="Trip Expense Splitter", layout="centered")
 
@@ -109,19 +110,23 @@ if st.button("Calculate Split"):
         })
 
         # ----------------------------
-        # Export to Excel
-        # ----------------------------
-        df = pd.DataFrame(settlements)
+# Export to Excel (FIXED)
+# ----------------------------
+if not df.empty:
+    st.divider()
+    st.subheader("📥 Download Settlement")
 
-        if not df.empty:
-            st.divider()
-            st.subheader("📥 Download Settlement")
+    buffer = BytesIO()
+    df.to_excel(buffer, index=False, engine="openpyxl")
+    buffer.seek(0)
 
-            st.download_button(
-                label="Download Excel File",
-                data=df.to_excel(index=False, engine="openpyxl"),
-                file_name="trip_settlement.xlsx"
-            )
+    st.download_button(
+        label="Download Excel File",
+        data=buffer,
+        file_name="trip_settlement.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+
 
 # ----------------------------
 # Trip History
